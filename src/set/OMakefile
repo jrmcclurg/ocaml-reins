@@ -1,0 +1,9 @@
+
+OCAMLINCLUDES += ../base ../iterator
+
+FILES[] += 
+        set/sets
+        set/aVLSet
+        set/splaySet
+        set/rBSet
+        set/patriciaSet

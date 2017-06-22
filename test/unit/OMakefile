@@ -1,0 +1,24 @@
+
+TESTDIRS = list heap set map
+
+OCAMLPACKS [] = oUnit num
+OCAMLINCLUDES += $(ROOT)/src
+
+FILES[] = 
+	test_helper
+	genericTest
+	test_runner
+
+.SUBDIRS: $(TESTDIRS)
+	include OMakefile
+	export FILES
+
+OCAMLINCLUDES += $(TESTDIRS)
+
+OCAML_LIBS = $(ROOT)/src/reins 
+TEST_PROGRAM = $(OCamlProgram run_unit_tests, $(FILES))
+
+unit_tests.results: $(TEST_PROGRAM)
+	./run_unit_tests |& tee $@
+
+.DEFAULT: $(TEST_PROGRAM) unit_tests.results

@@ -1,0 +1,8 @@
+
+OCAMLINCLUDES += ../base ../set ../map ../list
+
+FILES[] += 
+	iterator/listIterator
+	iterator/treeSetIterator
+	iterator/iterator
+	iterator/iteratorMixin

@@ -1,0 +1,20 @@
+
+static. = 
+	BYTE_ENABLED = true
+	USE_OCAMLFIND=true
+	if $(not $(OCAMLFIND_EXISTS))
+	  eprintln(ocaml-findlib is required to build this project)
+	  exit 1
+	OCAMLDEP_MODULES_ENABLED = $(OCAMLDEP_MODULES_AVAILABLE)
+	OCAMLDEP=$(OCAMLDEP_MODULES)
+	if $(not $(defined PREFIX))
+	  PREFIX=$(shell ocamlc -where)
+	  export
+	if $(defined-env OCAMLFIND_DESTDIR)
+	  PREFIX = $(getenv OCAMLFIND_DESTDIR)
+	  export
+	VERSION=0.1a
+	ConfMsgChecking(oUnit)
+	OUNIT_DIR=$(shell ocamlfind query oUnit)
+	ConfMsgResult($(OUNIT_DIR))
+	export

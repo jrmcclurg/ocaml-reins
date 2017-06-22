@@ -1,0 +1,7 @@
+
+OCAMLINCLUDES += ../base
+FILES[] += 
+	heap/binomialHeap
+	heap/skewBinomialHeap
+	heap/heaps
+#	heap/soft

@@ -1,0 +1,56 @@
+
+FILES[] = version
+OCAMLFLAGS += -for-pack Reins
+
+DIRS = base list iterator set map heap oracle
+
+.SUBDIRS: $(DIRS) 
+	include OMakefile
+	export FILES
+
+version.ml:
+	echo "let version = \"$(VERSION)\"" > version.ml
+
+META: META.in
+	sed "s/@version/$(VERSION)/" META.in > META
+
+reins.mli: $(addsuffix .cmi, $(FILES)) :optional: $(addsuffix .mli, $(FILES))
+  rm -f $@
+  echo "(** The OCaml Reins library *)" > $@
+  foreach(name, \
+	  $(filter-exists \
+	  $(replacesuffixes .cmi, .mli, \
+	  $(file-sort .BUILDORDER, \
+	  $(filter %.cmi, \
+	  $^)))))
+     mod = $(capitalize $(removesuffix $(basename $(name))))
+     echo "module $(mod) : sig" >> $@
+     cat $(name) >> $@
+     echo "end" >> $@
+
+section
+  # hack for pre 3.10 -pack behavior
+  OCAMLFLAGS = $(mapprefix -I,$(DIRS))
+  REINS_PKG = $(OCamlPackage reins, $(FILES))
+  REINS_LIB = $(OCamlLibrary reins, reins)
+  export REINS_LIB
+
+REINS_TOP = reins
+$(REINS_TOP) : libreins.cma
+	$(OCAMLMKTOP) -o $(REINS_TOP) nums.cma unix.cma libreins.cma
+
+.PHONY: doc
+
+doc: reins.mli
+	ocamldoc -v -sort -warn-error -html -d $(ROOT)/doc/html/api reins.mli
+
+.DEFAULT: $(REINS_LIB) #$(REINS_TOP)
+
+.PHONY: install
+
+REINS_CMX=$(if $(NATIVE_ENABLED), reins.cmx)
+
+install: META $(REINS_LIB)
+	mkdir -p $(PREFIX)/reins
+	ocamlfind install reins META $(REINS_LIB) $(REINS_CMX) reins.cmi \
+	  $(filter-exists $(addsuffix .mli, $(FILES)))

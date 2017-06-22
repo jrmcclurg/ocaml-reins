@@ -1,0 +1,14 @@
+
+OCAMLINCLUDES[] += ../base ../list ../set ../map ../heap
+
+FILES[] +=
+	oracle/oracle
+	oracle/oracleSet
+	oracle/oracleList
+	oracle/dug
+	oracle/dugADT
+	oracle/dugProfile
+	oracle/dugExtractor
+	oracle/dugGenerator
+	oracle/randomBag
+	oracle/replayList

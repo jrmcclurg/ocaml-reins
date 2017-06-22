@@ -1,0 +1,10 @@
+
+OCAMLINCLUDES += ..
+
+FILES[] +=
+	map/aVLMapTest
+	map/patriciaMapTest
+	map/splayMapTest
+	map/genericMapTest
+	map/rBMapTest
+

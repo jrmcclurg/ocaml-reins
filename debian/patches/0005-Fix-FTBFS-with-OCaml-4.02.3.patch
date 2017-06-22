@@ -1,0 +1,22 @@
+From: Mehdi Dogguy <mehdi@debian.org>
+Date: Fri, 16 Oct 2015 22:45:57 +0200
+Subject: Fix FTBFS with OCaml 4.02.3
+
+---
+ OMakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/OMakefile b/OMakefile
+index b741412..c5b6a4e 100644
+--- a/OMakefile
++++ b/OMakefile
+@@ -1,7 +1,7 @@
+ 
+ include config.omake
+ 
+-OCAMLFLAGS += -dtypes
++OCAMLFLAGS += -dtypes -w +a-3-4-27-50-k
+ 
+ .SUBDIRS: src doc
+ 
+-- 

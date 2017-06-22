@@ -1,0 +1,66 @@
+ocaml-reins (0.1a-6build1) xenial; urgency=medium
+
+  * No-change rebuild against ocaml 4.02.
+
+ -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@canonical.com>  Wed, 04 Nov 2015 13:44:00 -0600
+
+ocaml-reins (0.1a-6) unstable; urgency=medium
+
+  * Team upload.
+  * Fix FTBFS with OCaml 4.02.3
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Fri, 16 Oct 2015 22:48:32 +0200
+
+ocaml-reins (0.1a-5) unstable; urgency=medium
+
+  * Team upload
+  * debian/patches:
+    + Fix test-suite with new oUnit (Closes: #713499)
+    + Fix version in META
+  * Remove myself from Uploaders
+  * Update Vcs-*
+  * Add ocaml-findlib to Suggests
+
+ -- Stéphane Glondu <glondu@debian.org>  Thu, 30 Jan 2014 14:56:07 +0100
+
+ocaml-reins (0.1a-4) unstable; urgency=low
+
+  * Team upload.
+  * Set a dummy HOME when calling omake (fixes FTBFS on buildds where
+    HOME is not set).
+
+ -- Mehdi Dogguy <mehdi@debian.org>  Thu, 21 Apr 2011 22:06:00 +0200
+
+ocaml-reins (0.1a-3) unstable; urgency=low
+
+  * Switch to dh-ocaml 0.9
+  * Switch to format 3.0 (quilt)
+  * debian/control:
+    - update my e-mail address, remove DMUA
+    - update Standards-Version to 3.8.3 (no changes)
+
+ -- Stéphane Glondu <glondu@debian.org>  Sun, 20 Dec 2009 02:37:35 +0100
+
+ocaml-reins (0.1a-2) unstable; urgency=low
+
+  [ Stefano Zacchiroli ]
+  * promote Homepage to a real debian/control field, now that dpkg supports it
+
+  [ Stephane Glondu ]
+  * Switch packaging to git
+  * Switch patches to quilt, add README.source
+  * Use dh and bump debhelper compatibility level to 7
+  * debian/control:
+    - set Maintainer to d-o-m, add Mike and myself to Uploaders
+    - move to section ocaml
+    - update Standards-Version to 3.8.2
+    - add versioned dependency on omake to avoid buggy package
+  * Switch debian/copyright to new format
+
+ -- Stephane Glondu <steph@glondu.net>  Sat, 04 Jul 2009 17:01:39 +0200
+
+ocaml-reins (0.1a-1) unstable; urgency=low
+
+  * Initial release (Closes: #445039)
+
+ -- Mike Furr <mfurr@debian.org>  Tue, 02 Oct 2007 16:35:40 -0400

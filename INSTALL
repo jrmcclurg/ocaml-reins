@@ -1,0 +1,18 @@
+
+The following software is required to build OCaml Reins
+  * OCaml versions >= 3.09.2; earlier versions have not been tested.
+  * OCaml findlib (http://www.ocaml-programming.de/programming/findlib.html)
+  * OMake (http://omake.metaprl.org) version >= 0.9.8.5
+  * OUnit (http://www.xs4all.nl/~mmzeeman/ocaml/) version >= 1.0.1.
+
+To build the library simply type:
+  $ omake
+
+To install it (using ocaml-findlib) type:
+  $ omake install
+
+To build the api documentation type:
+  $ omake doc
+
+The documentation can then be installed by copying it from
+doc/html/api to the desired location.

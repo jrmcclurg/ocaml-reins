@@ -1,0 +1,13 @@
+
+include config.omake
+
+OCAMLFLAGS += -dtypes -w +a-3-4-27-50-k
+
+.SUBDIRS: src doc
+
+.SUBDIRS: test
+
+.PHONY: clean
+
+clean:
+	rm -f $(filter-proper-targets $(ls R, .))

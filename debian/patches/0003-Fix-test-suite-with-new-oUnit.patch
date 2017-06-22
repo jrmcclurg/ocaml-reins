@@ -1,0 +1,36 @@
+From: Stephane Glondu <steph@glondu.net>
+Date: Thu, 30 Jan 2014 14:39:23 +0100
+Subject: Fix test-suite with new oUnit
+
+This is a part of https://github.com/ocaml/opam-repository/blob/master/packages/reins/reins.0.1a/files/fix_build.patch
+
+Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=713499
+---
+ test/unit/OMakefile | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/test/unit/OMakefile b/test/unit/OMakefile
+index 565c83d..4ec66c9 100644
+--- a/test/unit/OMakefile
++++ b/test/unit/OMakefile
+@@ -1,9 +1,8 @@
+ 
+ TESTDIRS = list heap set map
+ 
+-OCAMLINCLUDES += \
+-	$(shell $(OCAMLFIND) query oUnit) \
+-	$(ROOT)/src
++OCAMLPACKS [] = oUnit num
++OCAMLINCLUDES += $(ROOT)/src
+ 
+ FILES[] = 
+ 	test_helper
+@@ -17,7 +16,6 @@ FILES[] =
+ OCAMLINCLUDES += $(TESTDIRS)
+ 
+ OCAML_LIBS = $(ROOT)/src/reins 
+-OCAML_OTHER_LIBS += str nums unix oUnit
+ TEST_PROGRAM = $(OCamlProgram run_unit_tests, $(FILES))
+ 
+ unit_tests.results: $(TEST_PROGRAM)
+-- 

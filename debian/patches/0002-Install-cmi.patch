@@ -1,0 +1,20 @@
+From: Mike Furr <mfurr@debian.org>
+Date: Sat, 4 Jul 2009 14:48:41 +0200
+Subject: Install cmi
+
+---
+ src/OMakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/OMakefile b/src/OMakefile
+index 983799d..e85608c 100644
+--- a/src/OMakefile
++++ b/src/OMakefile
+@@ -52,5 +52,5 @@ REINS_CMX=$(if $(NATIVE_ENABLED), reins.cmx)
+ 
+ install: META $(REINS_LIB)
+ 	mkdir -p $(PREFIX)/reins
+-	ocamlfind install reins META $(REINS_LIB) $(REINS_CMX) \
++	ocamlfind install reins META $(REINS_LIB) $(REINS_CMX) reins.cmi \
+ 	  $(filter-exists $(addsuffix .mli, $(FILES)))
+-- 

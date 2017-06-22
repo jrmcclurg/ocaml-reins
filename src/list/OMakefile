@@ -1,0 +1,15 @@
+
+
+OCAMLINCLUDES += ../base/ 
+#OCAMLFLAGS = -for-pack Reins.Lists
+
+FILES[] += 
+	list/sList
+	list/doubleList
+	list/catenableList
+	list/doubleQueue
+	list/skewBinaryList
+	list/lists
+	list/listCursor
+	list/listCommon
+

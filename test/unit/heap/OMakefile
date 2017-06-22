@@ -1,0 +1,7 @@
+
+OCAMLINCLUDES += ..
+
+FILES[] +=
+	heap/genericHeapTest
+	heap/binomialHeapTest
+	heap/skewBinomialHeapTest

@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+include /usr/share/ocaml/ocamlvars.mk
+
+DEST := $(CURDIR)/debian/libreins-ocaml-dev/$(OCAML_STDLIB_DIR)
+
+%:
+	dh --with ocaml $@
+
+.PHONY: override_dh_auto_build
+override_dh_auto_build:
+	HOME=/nonexistant OCAMLFIND_DESTDIR=$(DEST) omake --config
+
+.PHONY: override_dh_auto_clean
+override_dh_auto_clean:
+	HOME=/nonexistant omake clean
+	rm -f .omake*
+	find . -iname \*.omc -exec rm -f \{\} \;
+	find . -iname \*.annot -exec rm -f \{\} \;
+	rm -f doc/html/api/*
+
+.PHONY: override_dh_auto_install
+override_dh_auto_install:
+	HOME=/nonexistant OCAMLFIND_DESTDIR=$(DEST) omake install

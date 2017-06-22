@@ -1,0 +1,11 @@
+
+OCAMLINCLUDES += ..
+
+FILES[] +=
+	set/aVLSetTest
+	set/patriciaSetTest
+	set/splaySetTest
+	set/genericSetTest
+	set/rBSetTest
+	set/treeSetIteratorTest
+

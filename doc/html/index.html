@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>O'Caml Reins Data Structure Library</title>
+  </head>
+  <body>
+
+<center>
+  <h1>O'Caml Reins</h1>
+</center>
+
+<p>
+  Welcome to the home page for the O'Caml Reins persistent data
+  structure library.  This project began as an <a
+  href="http://osp2007.janestcapital.com/">OCaml Summer Project</a>
+  sponsored by Jane St. Capital and is now continuing on here at
+  sourceforge.  Since it is my goal to include as many data structures
+  as possible in this library, I am always looking for contributions
+  from others.  Even if you don't have time to contribute code, but
+  know of a data structure that you would like to see included, please
+  let us know by sending a message to the <a
+  href="https://lists.sourceforge.net/lists/listinfo/ocaml-reins-devel">mailing
+  list</a>.  In addition to providing a large collection of data
+  structures, the O'Caml Reins project also includes several features
+  that I hope will make developing O'Caml applications easier such as
+  a random testing framework and a collection of "standard" modules.
+</p>
+<h3>Current features</h3>
+  <ul>
+    <li> List data types:
+      <ul>
+	<li> Single linked lists (compatible with the standard library type)</li>
+	<li> O(1) catenable lists </li>
+	<li> Acyclic double linked lists</li>
+	<li> Random access lists with O(1) hd/cons/tl and O(log i)
+	lookup/update for i'th element</li>
+      </ul></li>
+    <li> Double ended queues</li>
+    <li> Sets/Maps:
+      <ul>
+	<li>AVL</li>
+	<li>Red/Black</li>
+	<li>Big-endian Patricia</li>
+	<li>Splay</li>
+      </ul></li>
+    <li> Heaps:
+      <ul>
+	<li> Binomial </li>
+	<li> Skew Binomial </li>
+      </ul>
+    </li>
+    <li> Zipper style cursor interfaces </li>
+    <li> Persistent, bi-directional cursor based iterators (currently
+    only for lists and sets)</li>
+    <li> All standard types hoisted into the module level (Int, Bool, etc...)</li>
+    <li> A collection of functor combinators to minimize boilerplate
+    (e.g., constructing <tt>compare</tt> or <tt>to_string</tt>
+    functions)</li>
+    <li> Quickcheck testing framework
+      <ul><li>Each structure provides a <tt>gen</tt> function that can
+      generate a random instance of itself</li></ul>
+    </li>
+    <li> Completely safe code.  No -unsafe or references to Obj.*</li>
+    <li> Consistent function signatures.  For instance, all <tt>fold</tt>
+    functions take the accumulator in the same position.</li>
+    <li> All operations use no more than O(log n) stack space (except
+    for a few operations on splay trees which currently have O(log n)
+    expected time, but O(n) worst case) </li>
+
+  </ul>
+
+<h3>Coming features</h3>
+There are several features that were not quite ready for this release
+  but are in the works:
+  <ul>
+    <li> Space and time asymptotic bounds on all functions </li>
+    <li> Automatic benchmarking of all included data structures (based
+    on Graeme Moss's PhD thesis)
+      <ul><li>Including a set of <i>Oracle</i> data structures which
+      recommend a specific implementation based on observed executions</li></ul>
+    </li>
+    <li> Fill in missing functionality.  For instance sets and maps
+    need a {to,from}_list function and many list functions are still
+    missing. </li>
+    <li> More data structures:
+      <ul>
+	<li> weight balanced trees </li>
+	<li> persistent arrays </li>
+	<li> more heap implementations </li>
+      </ul>
+    </li>
+    <li> Iterators for maps and heaps </li>
+    <li> 100% code coverage from the test suite</li>
+    <li> Web based manual / tutorial for using some of the less
+    intuitive features </li>
+  </ul>
+
+<h3>More Information</h3>
+<p>
+  Check out the sourceforce
+  <a href="https://sourceforge.net/projects/ocaml-reins/">project
+    page</a> for access to svn, bug tracker, etc...<br/>
+  
+There is also a
+  <a
+  href="https://lists.sourceforge.net/lists/listinfo/ocaml-reins-devel">mailing
+  list</a> setup. <br/>
+
+  You can also browse the ocamldoc API pages available <a
+  href="api/index.html">here</a>
+</p>
+
+<p>
+This page is hosted by: <a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=205082&amp;type=3" width="125" height="37" border="0" alt="SourceForge.net Logo" /></a>
+</p>
+
+<hr width="100%"/>
+<p>
+<a href="http://validator.w3.org/check?uri=referer">
+
+	<img src="http://www.w3.org/Icons/valid-xhtml10"
+	     alt="Valid XHTML 1.0!" height="31" width="88" />
+	</a>
+</p>
+</body>
+
+</html>

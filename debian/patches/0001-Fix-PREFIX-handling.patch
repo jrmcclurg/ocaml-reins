@@ -1,0 +1,27 @@
+From: Mike Furr <mfurr@debian.org>
+Date: Sat, 4 Jul 2009 14:48:29 +0200
+Subject: Fix PREFIX handling
+
+---
+ config.omake | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/config.omake b/config.omake
+index 4417254..7a35fc2 100644
+--- a/config.omake
++++ b/config.omake
+@@ -7,7 +7,12 @@ static. =
+ 	  exit 1
+ 	OCAMLDEP_MODULES_ENABLED = $(OCAMLDEP_MODULES_AVAILABLE)
+ 	OCAMLDEP=$(OCAMLDEP_MODULES)
+-	PREFIX=$(shell ocamlc -where)
++	if $(not $(defined PREFIX))
++	  PREFIX=$(shell ocamlc -where)
++	  export
++	if $(defined-env OCAMLFIND_DESTDIR)
++	  PREFIX = $(getenv OCAMLFIND_DESTDIR)
++	  export
+ 	VERSION=0.1a
+ 	ConfMsgChecking(oUnit)
+ 	OUNIT_DIR=$(shell ocamlfind query oUnit)
+-- 

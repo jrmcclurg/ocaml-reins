@@ -1,0 +1,9 @@
+
+OCAMLINCLUDES += ../base ../iterator
+
+FILES[] += 
+        map/maps
+        map/aVLMap
+        map/splayMap
+        map/rBMap
+        map/patriciaMap

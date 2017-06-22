@@ -1,0 +1,10 @@
+
+OCAMLINCLUDES += ..
+
+FILES[] += 
+	list/sListTest
+	list/doubleListTest
+	list/catenableListTest
+	list/doubleQueueTest
+	list/skewBinaryListTest
+	list/genericListTest

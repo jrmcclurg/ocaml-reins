@@ -1,0 +1,28 @@
+
+OCAMLINCLUDES += $(ROOT)/src #+benchmark
+
+FILES[] = 
+	bench_driver
+	bench
+	list_bench
+	dug_set_tests
+
+TESTDIRS = set
+
+.SUBDIRS: $(TESTDIRS)
+	include OMakefile
+	export FILES
+
+OCAMLINCLUDES += $(TESTDIRS)
+
+OCAML_OTHER_LIBS = nums unix #benchmark
+
+OCAML_LIBS = $(ROOT)/src/reins
+
+PERF_DRIVER = $(OCamlProgram run_benchmarks,$(FILES))
+
+perf_tests.results: $(PERF_DRIVER)
+	$(PERF_DRIVER) |& tee $@
+
+
+.DEFAULT: $(PERF_DRIVER) #perf_tests.results

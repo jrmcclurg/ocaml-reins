@@ -1,0 +1,44 @@
+Source: ocaml-reins
+Section: ocaml
+Priority: optional
+Maintainer: Debian OCaml Maintainers <debian-ocaml-maint@lists.debian.org>
+Uploaders:
+ Mike Furr <mfurr@debian.org>
+Build-Depends:
+ debhelper (>= 7.0.50~),
+ ocaml-nox (>= 3.11.1-3~),
+ omake (>= 0.9.8.5-3-6),
+ libounit-ocaml-dev (>= 1.0.3-4~),
+ ocaml-findlib (>= 1.2.5),
+ dh-ocaml (>= 0.9)
+Standards-Version: 3.8.3
+Vcs-Git: git://anonscm.debian.org/pkg-ocaml-maint/packages/ocaml-reins.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-ocaml-maint/packages/ocaml-reins.git
+Homepage: http://ocaml-reins.sourceforge.net/
+
+Package: libreins-ocaml-dev
+Architecture: any
+Depends:
+ ${ocaml:Depends},
+ ${shlibs:Depends},
+ ${misc:Depends}
+Provides: ${ocaml:Provides}
+Suggests: ocaml-findlib
+Description: data structure library for OCaml
+ The OCaml Reins data structure library consists of the following
+ persistent implementations:
+  * Lists (singly, O(1) catenable, Acyclic doubly linked,
+           random access)
+  * Sets/Maps (AVL, Red/Black, Patricia, Splay)
+  * Heaps (Binomial, Skew-Binomial)
+ .
+ All of the implementations conform to a unified signature for each
+ data type.  Also, each data types include zipper style cursor
+ interfaces and persistent, bi-directional cursor based iterators.
+ The library also includes a set of standard modules to hoist the base
+ typs into the module level (Int, Bool, etc...) as well as a
+ collection of functor combinators to minimize boilerplate (e.g., for
+ constructing compare or to_string functions).  Finally, a
+ quickcheck-like random testing framework is included and each data
+ type supports the necessary "gen" function to generate a random
+ instance of the type.
