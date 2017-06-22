@@ -46,26 +46,26 @@ module Make(L : Lists.ListSig) = struct
   let prev_cons x (p,n) =(L.cons x p), n
 
   let hd (_,n) = 
-    try fst (L.pop n) with Failure "pop" -> failwith "hd"
+    try fst (L.pop n) with Failure(s) when s="pop" -> failwith "hd"
 
   let value (_,n) = if L.is_empty n then None else Some (L.hd n)
 
   let prev_hd (p,_) = 
-    try fst (L.pop p) with Failure "pop" -> failwith "prev_hd"
+    try fst (L.pop p) with Failure(s) when s="pop" -> failwith "prev_hd"
 
   let tl (p,n) = 
     try let tl = snd (L.pop n) in (p,tl) 
-    with Failure "pop" -> failwith "tl"
+    with Failure(s) when s="pop" -> failwith "tl"
 
   let prev_tl (p,n) = 
     try let tl = snd (L.pop p) in (tl,n)
-    with Failure "pop" -> failwith "prev_tl"
+    with Failure(s) when s="pop" -> failwith "prev_tl"
       
   let pop (p,n) = let h,tl = L.pop n in h, (p,tl)
 
   let prev_pop (p,n) = 
     try let h,tl = L.pop p in h, (tl,n)
-    with Failure "pop" -> failwith "prev_pop"
+    with Failure(s) when s="pop" -> failwith "prev_pop"
 
   let rec goto_front l = 
     if at_front l then l else goto_front (prev l)

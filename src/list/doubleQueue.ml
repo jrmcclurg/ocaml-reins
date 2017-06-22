@@ -48,7 +48,7 @@ let last = function
 
 let hd_back t = 
   try last  t
-  with Failure "last" -> failwith "hd_back"
+  with Failure(s) when s="last" -> failwith "hd_back"
 
 let tl_back = function
   | f, (r::rs) -> (f,rs)

@@ -318,11 +318,15 @@ sig
   external of_int : int -> int32 = "%int32_of_int"
   external to_int : int32 -> int = "%int32_to_int"
   external of_float : float -> int32 = "caml_int32_of_float"
+  "caml_int32_of_float_unboxed" [@@unboxed] [@@noalloc]
   external to_float : int32 -> float = "caml_int32_to_float"
+  "caml_int32_to_float_unboxed" [@@unboxed] [@@noalloc]
   external of_string : string -> int32 = "caml_int32_of_string"
   val to_string : int32 -> string
   external bits_of_float : float -> int32 = "caml_int32_bits_of_float"
+  "caml_int32_bits_of_float_unboxed" [@@unboxed] [@@noalloc]
   external float_of_bits : int32 -> float = "caml_int32_float_of_bits"
+  "caml_int32_float_of_bits_unboxed" [@@unboxed] [@@noalloc]
   type t = int32
   val compare : t -> t -> int
   external format : string -> int32 -> string = "caml_int32_format"
@@ -357,7 +361,9 @@ sig
   external of_int : int -> int64 = "%int64_of_int"
   external to_int : int64 -> int = "%int64_to_int"
   external of_float : float -> int64 = "caml_int64_of_float"
+  "caml_int64_of_float_unboxed" [@@unboxed] [@@noalloc]
   external to_float : int64 -> float = "caml_int64_to_float"
+  "caml_int64_to_float_unboxed" [@@unboxed] [@@noalloc]
   external of_int32 : int32 -> int64 = "%int64_of_int32"
   external to_int32 : int64 -> int32 = "%int64_to_int32"
   external of_nativeint : nativeint -> int64 = "%int64_of_nativeint"
@@ -365,7 +371,9 @@ sig
   external of_string : string -> int64 = "caml_int64_of_string"
   val to_string : int64 -> string
   external bits_of_float : float -> int64 = "caml_int64_bits_of_float"
+  "caml_int64_bits_of_float_unboxed" [@@unboxed] [@@noalloc]
   external float_of_bits : int64 -> float = "caml_int64_float_of_bits"
+  "caml_int64_float_of_bits_unboxed" [@@unboxed] [@@noalloc]
   type t = int64
   val compare : t -> t -> int
   external format : string -> int64 -> string = "caml_int64_format"
@@ -402,7 +410,9 @@ sig
   external of_int : int -> nativeint = "%nativeint_of_int"
   external to_int : nativeint -> int = "%nativeint_to_int"
   external of_float : float -> nativeint = "caml_nativeint_of_float"
+  "caml_nativeint_of_float_unboxed" [@@unboxed] [@@noalloc]
   external to_float : nativeint -> float = "caml_nativeint_to_float"
+  "caml_nativeint_to_float_unboxed" [@@unboxed] [@@noalloc]
   external of_int32 : int32 -> nativeint = "%nativeint_of_int32"
   external to_int32 : nativeint -> int32 = "%nativeint_to_int32"
   external of_string : string -> nativeint = "caml_nativeint_of_string"
@@ -611,9 +621,9 @@ sig
   external unsafe_set : string -> int -> char -> unit
     = "%string_unsafe_set"
   external unsafe_blit : string -> int -> string -> int -> int -> unit
-    = "caml_blit_string" "noalloc"
+    = "caml_blit_string" [@@noalloc]
   external unsafe_fill : string -> int -> int -> char -> unit
-    = "caml_fill_string" "noalloc"
+    = "caml_fill_string" [@@noalloc]
   val equal : t -> t -> bool
   val hash : 'a -> int
   val gen : ?size:int -> Random.State.t -> string

@@ -19,15 +19,15 @@ end
 module type OSet = sig
   include DugADT.S
 
-  module Extractor : functor(A : Types.Mono.ArbitraryComparable) -> Sets.GenSetSig
+  (*module Extractor : functor(A : Types.Mono.ArbitraryComparable) -> Sets.GenSetSig*)
 
-  module BenchMark : functor(S : Sets.GenSetSig) -> sig
+  (*module BenchMark : functor(S : Sets.GenSetSig) -> sig
     val benchmark : 
       ((S.elt,Dug.Id.t) generator, 
        (S.elt,Dug.Id.t) mutator, 
        (S.elt,Dug.Id.t) observer) Dug.t
       -> float
-  end
+  end*)
 end
 
 (*

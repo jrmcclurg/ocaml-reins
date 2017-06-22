@@ -19,4 +19,4 @@ let to_string iter pop to_s t =
 	   ) tl;
       Buffer.add_char buf ']';
       Buffer.contents buf
-  with Failure "pop" -> "[]"
+  with Failure(s) when s="pop" -> "[]"

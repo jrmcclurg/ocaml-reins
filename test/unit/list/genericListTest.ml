@@ -159,7 +159,7 @@ let assert_equal_int x y =
 	  ignore(L.hd L.empty); 
 	  assert_failure "hd of empty should raise an exception"
 	with
-	  | Failure "hd" -> ()
+	  | Failure(s) when s="hd" -> ()
 	  | _ -> assert_failure "(hd empty) raised the wrong exception"));
 
     ("tl of empty raises Failure 'tl'" >:: fun () ->
@@ -167,7 +167,7 @@ let assert_equal_int x y =
 	  ignore(L.tl L.empty); 
 	  assert_failure "tl of empty should raise an exception"
 	with
-	  | Failure "tl" -> ()
+	  | Failure(s) when s="tl" -> ()
 	  | _ -> assert_failure "(tl empty) raised the wrong exception"));
 
     ("pop of empty raises Failure 'pop'" >:: fun () ->
@@ -175,7 +175,7 @@ let assert_equal_int x y =
 	  ignore(L.pop L.empty); 
 	  assert_failure "pop of empty should raise an exception"
 	with
-	  | Failure "pop" -> ()
+	  | Failure(s) when s="pop" -> ()
 	  | _ -> assert_failure "(pop empty) raised the wrong exception"));
 
     ("last of empty raises Failure 'last'" >:: fun () ->
@@ -183,7 +183,7 @@ let assert_equal_int x y =
 	  ignore(L.last L.empty); 
 	  assert_failure "last of empty should raise an exception"
 	with
-	  | Failure "last" -> ()
+	  | Failure(s) when s="last" -> ()
 	  | _ -> assert_failure "(last empty) raised the wrong exception"));
 
     ("map of (+1) on [1..5] is [2..6]" >:: fun () ->
