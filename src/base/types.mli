@@ -469,7 +469,7 @@ sig
   val big_int_of_nat : Nat.nat -> big_int
   val base_power_big_int : int -> int -> big_int -> big_int
   val sys_big_int_of_string : string -> int -> int -> big_int
-  val round_futur_last_digit : string -> int -> int -> bool
+  val round_futur_last_digit : bytes -> int -> int -> bool
   val approx_big_int : int -> big_int -> string
   type t = big_int
   val equal : big_int -> big_int -> bool
@@ -594,13 +594,13 @@ module String :
 sig
   external length : string -> int = "%string_length"
   external get : string -> int -> char = "%string_safe_get"
-  external set : string -> int -> char -> unit = "%string_safe_set"
-  external create : int -> string = "caml_create_string"
+  external set : bytes -> int -> char -> unit = "%string_safe_set"
+  external create : int -> bytes = "caml_create_string"
   val make : int -> char -> string
   val copy : string -> string
   val sub : string -> int -> int -> string
-  val fill : string -> int -> int -> char -> unit
-  val blit : string -> int -> string -> int -> int -> unit
+  val fill : bytes -> int -> int -> char -> unit
+  val blit : string -> int -> bytes -> int -> int -> unit
   val concat : string -> string list -> string
   val iter : (char -> unit) -> string -> unit
   val escaped : string -> string
@@ -618,15 +618,15 @@ sig
   type t = string
   val compare : t -> t -> int
   external unsafe_get : string -> int -> char = "%string_unsafe_get"
-  external unsafe_set : string -> int -> char -> unit
+  external unsafe_set : bytes -> int -> char -> unit
     = "%string_unsafe_set"
-  external unsafe_blit : string -> int -> string -> int -> int -> unit
+  external unsafe_blit : string -> int -> bytes -> int -> int -> unit
     = "caml_blit_string" [@@noalloc]
-  external unsafe_fill : string -> int -> int -> char -> unit
+  external unsafe_fill : bytes -> int -> int -> char -> unit
     = "caml_fill_string" [@@noalloc]
   val equal : t -> t -> bool
   val hash : 'a -> int
-  val gen : ?size:int -> Random.State.t -> string
+  val gen : ?size:int -> Random.State.t -> bytes
   val to_string : 'a -> 'a
 end
 
